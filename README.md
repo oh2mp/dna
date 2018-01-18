@@ -12,9 +12,9 @@ SQLite3 and Perl modules DBI, DBD::SQLite3 and Text::CSV are needed. Install the
 
   - Mac OS X:
 
-    1. Install [XCode](https://developer.apple.com/xcode/)
-    2. Start XCode, go to preferences, click downloads tab and click to install command line tools.
-    3. Install Text::CSV from CPAN. Other packages are already installed in Mac OS X. 
+1. Install [XCode](https://developer.apple.com/xcode/)
+2. Start XCode, go to preferences, click downloads tab and click to install command line tools.
+3. Install Text::CSV from CPAN. Other packages are already installed in Mac OS X. 
        Start terminal window and use command:
 
    `sudo perl -MCPAN -e 'install Text::CSV'`
