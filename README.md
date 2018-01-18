@@ -1,4 +1,4 @@
-*This repository will contain DNA data processing scripts for your own data that you can download from [FamilyTreeDNA](https://www.familytreedna.com/)*
+**This repository will contain DNA data processing scripts for your own data that you can download from [FamilyTreeDNA](https://www.familytreedna.com/)**
 
 SQLite3 and Perl modules DBI, DBD::SQLite3 and Text::CSV are needed. Install them: 
 
@@ -21,9 +21,10 @@ SQLite3 and Perl modules DBI, DBD::SQLite3 and Text::CSV are needed. Install the
    
   - Windows:
  
-    Sorry, I have no idea how to do it.
+    Sorry, I have no idea how to do it. Get another OS.
 
 ## The scripts
 
 ### matchimport.pl
-  - A simple perl script that imports Family Finder CSV data to a SQLite3 database. See its own README.
+  - A simple perl script that imports Family Finder CSV data to a SQLite3 database. 
+    See [matchimport.README.md](matchimport.README.md)

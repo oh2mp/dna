@@ -1,5 +1,13 @@
 #!/usr/bin/perl
 
+#######################################################################################################
+#
+# Simple script for importing FamilyTreeDna FF matches csv to a SQLite database.
+# Mikko Pikarinen 2018
+# See documentation at https://github.com/oh2mp/dna
+#
+#######################################################################################################
+
 use strict;
 use DBI;
 use Text::CSV;
@@ -92,6 +100,7 @@ while (my $row = $csv->getline($fd)) {
         (my $area = $name) =~ s/.*\(([^)]+)\).*/$1/; # Area is always in parenthesis, so cut it out
         undef $area if ($area eq $name);             # No area for this name?
         $name =~ s/\s*\(.*//;
+        next if (!$name);                            # don't save empty names
         $sthsn->execute($id,$name,$area);            # Save to ancestor table
     }
 }
