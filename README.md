@@ -28,3 +28,7 @@ SQLite3 and Perl modules DBI, DBD::SQLite3 and Text::CSV are needed. Install the
 ### matchimport.pl
   - A simple perl script that imports Family Finder CSV data to a SQLite3 database. 
     See [matchimport.README.md](matchimport.README.md)
+
+### chrimport.pl
+  - A simple perl script that imports Family Finder chromosome browser CSV data to a SQLite3 database.
+    See [chrimport.README.md](chrimport.README.md)
