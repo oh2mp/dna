@@ -11,14 +11,21 @@
 use strict;
 use DBI;
 use Text::CSV;
+use IO::Uncompress::Gunzip;
 
 binmode STDOUT, ":encoding(utf8)";
 
 my ($csvfile, $dbfile) = @ARGV;
-if (!$csvfile or !$dbfile) {
-    print STDERR "Usage: $0 matches_csv_file sqlite_db_file\n";
+if (!$csvfile) {
+    print STDERR "Usage: $0 matches_csv_file [sqlite_db_file]\n";
     exit(1);
 }
+
+if (!$dbfile) {
+    ($dbfile = $csvfile) =~ s/\.gz$//;
+    $dbfile =~ s/\.csv/.sqlite3/;
+}
+
 if (-e $dbfile) {
     print STDERR "Database file $dbfile already exists.\n";
     exit(2);
@@ -76,9 +83,22 @@ my $csv = Text::CSV->new({binary => 1});
 
 # Open CSV and iterate through every row 
 
-open(my $fd, "<:encoding(utf8)", $csvfile) or die "Cannot open csv: ".$!;
-while (my $row = $csv->getline($fd)) {
-    my @data = @{$row};
+my @csvlines = ();
+if ($csvfile =~ /\.gz$/) {
+    my $z = IO::Uncompress::Gunzip->new($csvfile);
+    while (my $line = $z->getline) {
+        push @csvlines, $line;
+    }
+    $z->close();
+} else {
+    open(my $fd, "<:encoding(utf8)", $csvfile) or die "Cannot open csv: ".$!;
+    @csvlines = <$fd>;
+    close $fd;
+}
+
+foreach my $row (@csvlines) {
+    my $status = $csv->parse($row);
+    my @data = $csv->fields;
 
     my $surnames = $data[11];                        # Separate ancestral surnames from other data
     @data = (@data[0..10],@data[12..$#data]);
@@ -104,7 +124,6 @@ while (my $row = $csv->getline($fd)) {
         $sthsn->execute($id,$name,$area);            # Save to ancestor table
     }
 }
-close $fd;
 $dbh->commit;
 $dbh->disconnect;
 

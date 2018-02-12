@@ -10,6 +10,10 @@ Simply run the script eg. like this:
 
 The script imports your csv into the database file `matches.sqlite3` 
 
+The csv file can be also gzipped, .csv.gz
+
+If you don't give the name for the dbfile, it will be the same filename as csv with extension .sqlite3
+
 If the script has nothing to complain, then it is totally quiet. This is only for import, not updating,
 so the script will not overwrite existing database file but creates a new one. After import just run 
 `sqlite3 matches.sqlite3` and start querying the database.

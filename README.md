@@ -4,7 +4,7 @@ SQLite3 and Perl modules DBI, DBD::SQLite3 and Text::CSV are needed. Install the
 
   - Ubuntu or Debian:
 
-  `sudo apt install sqlite3 libdbi-perl libdbd-sqlite3-perl libtext-csv-perl`
+  `sudo apt install sqlite3 libdbi-perl libdbd-sqlite3-perl libtext-csv-perl perl-modules`
 
   - RedHat, CentOS and other RPM-based distros:
 
