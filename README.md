@@ -32,3 +32,8 @@ SQLite3 and Perl modules DBI, DBD::SQLite3 and Text::CSV are needed. Install the
 ### chrimport.pl
   - A simple perl script that imports Family Finder chromosome browser CSV data to a SQLite3 database.
     See [chrimport.README.md](chrimport.README.md)
+
+## Other files
+
+### buildconversion.csv.gz
+  - CSV file that contains positions for RSID's in build 37 and 36
